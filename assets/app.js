@@ -126,7 +126,7 @@ window.EScard=card;
 const pages={
 home(){
  $("#rail").innerHTML=P.filter(p=>p.isNew).concat(P.filter(p=>!p.isNew).slice(0,6)).map(card).join("");
- $("#best").innerHTML=[1,7,15,20,11,3,18,8].map(i=>card(P.find(p=>p.id===i))).join("");
+ $("#best").innerHTML=[8,1,16,12,9,2,21,13].map(i=>card(P.find(p=>p.id===i))).join("");
  $("#cats").innerHTML=CATS.map(c=>`<a href="shop.html?cat=${c.k}"><div class="ph"><img src="${img(c.img,400)}" alt="" loading="lazy" onerror="${fallback}"></div>${T(c.en,c.ar)}</a>`).join("");
  $("#brands").innerHTML=window.BRANDS.map(b=>`<a href="shop.html?brand=${encodeURIComponent(b)}">${b}</a>`).join("");
  const r=$("#rail");$("#prev").onclick=()=>r.scrollBy({left:(ar()?1:-1)*r.clientWidth*.8,behavior:"smooth"});$("#next").onclick=()=>r.scrollBy({left:(ar()?-1:1)*r.clientWidth*.8,behavior:"smooth"});
@@ -136,7 +136,7 @@ shop(){
  const C=CATS.find(c=>c.k===cat);
  let title=C?T(C.en,C.ar):brand?brand:sale?T("Sale","تنزيلات"):isNew?T("New in","وصل حديثاً"):term?T(`Results for "${term}"`,`نتائج "${term}"`):T("Shop all","كل المنتجات");
  document.title=title+" · El Sayed Boutique";
- const banner=C?C.img:sale?"1705514234104-b3cf64c3bf4e":isNew?"1787435903217-7c73593affbf":"1441984904996-e0b6ba687e04";
+ const banner=C?C.img:sale?"1681890443178-360c3a9cc4da":isNew?"1697811599461-38124b3decc9":"1600091106710-7be582d40984";
  $("#banner").innerHTML=`<img src="${img(banner,1800)}" alt="" onerror="${fallback}"><div class="copy"><div class="crumbs" style="color:#ddd"><a href="index.html">${T("Home","الرئيسية")}</a>/<span>${title}</span></div><h1>${title}</h1></div>`;
  const chips=[["",T("All","الكل")],...CATS.map(c=>[c.k,T(c.en,c.ar)])];
  $("#chips").innerHTML=chips.map(([k,l])=>`<a class="chip ${(cat||"")===k&&!brand&&!sale&&!isNew&&!term?"on":""}" href="shop.html${k?"?cat="+k:""}">${l}</a>`).join("");
