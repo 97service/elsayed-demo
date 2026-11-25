@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop · El Sayed Boutique</title>
+<meta name="description" content="El Sayed Boutique, menswear in Tripoli, Lebanon. BOSS, Karl Lagerfeld, Gran Sasso, Harmont & Blaine, Eden Park. Delivery all over Lebanon.">
+<meta property="og:title" content="Shop · El Sayed Boutique">
+<meta property="og:description" content="El Sayed Boutique, menswear in Tripoli, Lebanon. BOSS, Karl Lagerfeld, Gran Sasso, Harmont & Blaine, Eden Park. Delivery all over Lebanon.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1705514234104-b3cf64c3bf4e?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23fff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Jost:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){try{var l=JSON.parse(localStorage.getItem("es_lang"))||"en";document.documentElement.lang=l;document.documentElement.dir=l=="ar"?"rtl":"ltr"}catch(e){}})()</script>
+</head>
+<body data-page="shop">
+<div id="hdr"></div>
+<main>
+<section class="catbanner" id="banner"></section>
+<section class="band" style="padding-top:0"><div class="wrap">
+ <div class="toolbar"><div class="chips" id="chips"></div>
+  <div class="filters2"><select id="fBrand" aria-label="Brand"></select><select id="fSize" aria-label="Size"></select>
+  <label style="display:flex;gap:6px;align-items:center;font-size:14px"><input type="checkbox" id="fStock"> <span class="en">In stock</span><span class="ar">متوفّر</span></label>
+  <select id="sort" aria-label="Sort"><option value="feat">Featured · مميّز</option><option value="new">Newest · الأحدث</option><option value="low">Price ↑ · السعر ↑</option><option value="high">Price ↓ · السعر ↓</option><option value="off">Biggest discount · أكبر خصم</option></select>
+  <span class="count" id="count"></span></div></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

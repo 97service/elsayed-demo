@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout · El Sayed Boutique</title>
+<meta name="description" content="El Sayed Boutique, menswear in Tripoli, Lebanon. BOSS, Karl Lagerfeld, Gran Sasso, Harmont & Blaine, Eden Park. Delivery all over Lebanon.">
+<meta property="og:title" content="Checkout · El Sayed Boutique">
+<meta property="og:description" content="El Sayed Boutique, menswear in Tripoli, Lebanon. BOSS, Karl Lagerfeld, Gran Sasso, Harmont & Blaine, Eden Park. Delivery all over Lebanon.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1705514234104-b3cf64c3bf4e?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23fff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Jost:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){try{var l=JSON.parse(localStorage.getItem("es_lang"))||"en";document.documentElement.lang=l;document.documentElement.dir=l=="ar"?"rtl":"ltr"}catch(e){}})()</script>
+</head>
+<body data-page="checkout">
+<div id="hdr"></div>
+<main>
+<section class="band"><div class="wrap">
+ <div class="steps"><span><span class="en">Bag</span><span class="ar">السلة</span></span>›<b><span class="en">Details</span><span class="ar">المعلومات</span></b>›<span><span class="en">Confirmation</span><span class="ar">التأكيد</span></span></div>
+ <h1 class="sec" style="margin-bottom:28px"><span class="en">Checkout</span><span class="ar">إتمام الطلب</span></h1>
+ <div class="two"><form id="coForm">
+  <h3 style="font-size:22px;margin-bottom:16px"><span class="en">1. Your details</span><span class="ar">1. معلوماتك</span></h3>
+  <div class="grid2"><div class="field"><label for="name"><span class="en">Full name</span><span class="ar">الاسم الكامل</span></label><input id="name" name="name" required autocomplete="name"></div>
+  <div class="field"><label for="phone"><span class="en">Mobile (WhatsApp)</span><span class="ar">الموبايل (واتساب)</span></label><input id="phone" name="phone" required type="tel" placeholder="03 123 456" autocomplete="tel"></div></div>
+  <div class="field"><label for="email"><span class="en">Email (optional)</span><span class="ar">الإيميل (اختياري)</span></label><input id="email" name="email" type="email" autocomplete="email"></div>
+  <h3 style="font-size:22px;margin:12px 0 16px"><span class="en">2. Delivery</span><span class="ar">2. التوصيل</span></h3>
+  <div class="choice"><label><input type="radio" name="ship" value="delivery" checked><span><b><span class="en">Home delivery</span><span class="ar">توصيل للبيت</span></b><small><span class="en">All over Lebanon, 1 to 3 working days. $5, free over $150.</span><span class="ar">لكل لبنان، 1 لـ 3 أيام عمل. 5$، مجاني فوق 150$.</span></small></span></label>
+  <label><input type="radio" name="ship" value="pickup"><span><b><span class="en">Pick up from the boutique</span><span class="ar">استلام من المحل</span></b><small><span class="en">Free. Kadisha St, Tripoli. Ready the same day.</span><span class="ar">مجاني. شارع قاديشا، طرابلس. جاهز بنفس النهار.</span></small></span></label></div>
+  <div id="addrBox"><div class="grid2"><div class="field"><label for="city"><span class="en">City / area</span><span class="ar">المدينة / المنطقة</span></label><select id="city" name="city" required><option value="">—</option><option>Tripoli</option><option>Mina</option><option>Koura</option><option>Zgharta</option><option>Batroun</option><option>Akkar</option><option>Jbeil</option><option>Jounieh</option><option>Beirut</option><option>Metn</option><option>Baabda</option><option>Saida</option><option>Zahle</option><option>Other</option></select></div>
+  <div class="field"><label for="address"><span class="en">Street, building, floor</span><span class="ar">الشارع، البناية، الطابق</span></label><input id="address" name="address" required autocomplete="street-address"></div></div></div>
+  <h3 style="font-size:22px;margin:12px 0 16px"><span class="en">3. Payment</span><span class="ar">3. الدفع</span></h3>
+  <div class="choice"><label><input type="radio" name="pay" value="Cash on delivery" checked><span><b><span class="en">Cash on delivery</span><span class="ar">الدفع عند الاستلام</span></b><small><span class="en">Pay in USD or LBP when your order arrives.</span><span class="ar">ادفع بالدولار أو بالليرة لما يوصل طلبك.</span></small></span></label>
+  <label><input type="radio" name="pay" value="Whish Money"><span><b>Whish Money</b><small><span class="en">We'll send you the Whish details on WhatsApp.</span><span class="ar">منبعتلك تفاصيل Whish عالواتساب.</span></small></span></label>
+  <label><input type="radio" name="pay" value="OMT"><span><b>OMT</b><small><span class="en">Transfer details sent on WhatsApp.</span><span class="ar">تفاصيل التحويل منبعتها عالواتساب.</span></small></span></label>
+  <label><input type="radio" name="pay" value="Card in store"><span><b><span class="en">Card at pickup</span><span class="ar">بطاقة عند الاستلام</span></b><small><span class="en">Visa or Mastercard at the boutique.</span><span class="ar">Visa أو Mastercard بالمحل.</span></small></span></label></div>
+  <div class="field"><label for="note"><span class="en">Note (optional)</span><span class="ar">ملاحظة (اختياري)</span></label><textarea id="note" name="note" rows="3" placeholder="Gift wrap, alterations, best time to call…"></textarea></div>
+  <button class="btn dark" style="width:100%"><span class="en">Place order</span><span class="ar">أكّد الطلب</span></button>
+  <p class="muted" style="font-size:13px"><span class="en">By placing your order you agree to our</span><span class="ar">بتأكيد الطلب إنت موافق على</span> <a href="terms.html"><span class="en">terms</span><span class="ar">الشروط</span></a>.</p>
+ </form><aside class="panel" id="coSum"></aside></div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
