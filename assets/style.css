@@ -292,3 +292,5 @@ td,th{border-bottom:1px solid var(--line);padding:10px 6px;text-align:start}
 .muted{color:var(--mute)}
 .icon .n[hidden]{display:none}
 .toast{opacity:0;visibility:hidden}.toast.on{opacity:1;visibility:visible}
+.hero::after{background:linear-gradient(90deg,rgb(0 0 0/.7),rgb(0 0 0/.15) 65%),linear-gradient(0deg,rgb(0 0 0/.5),transparent 50%)}
+html[dir=rtl] .hero::after{background:linear-gradient(270deg,rgb(0 0 0/.7),rgb(0 0 0/.15) 65%),linear-gradient(0deg,rgb(0 0 0/.5),transparent 50%)}
