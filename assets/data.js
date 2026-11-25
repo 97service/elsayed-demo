@@ -33,3 +33,11 @@ window.P=[
  {id:21,b:"BOSS",n:"Leather court sneakers",ar:"سنيكرز جلد أبيض",c:"footwear",p:260,off:30,col:[["White","#f0f0f0"]],st:{40:1,41:2,42:3,43:2,44:1,45:0},img:["1544441893-675973e31985"],d:"Smooth white leather on a rubber cupsole, with a tonal heel tab.",det:["Leather upper and lining","Rubber cupsole","True to size"]},
  {id:22,b:"Eden Park",n:"Clean white sneakers",ar:"سنيكرز أبيض",c:"footwear",p:190,off:30,col:[["White / Gum","#f4f4f4"]],st:{40:0,41:2,42:3,43:3,44:2,45:1},img:["1727061180303-d91cdeca6f9c"],d:"Minimal white leather sneakers on a gum sole. Wear with everything.",det:["Leather upper","Gum rubber sole","Half size up if between sizes"]}
 ];
+window.SUBS={
+ suits:[["suits","Suits","بدلات"],["three-piece","Three-piece suits","بدلات تلات قطع"],["blazers","Blazers","بليزرات"]],
+ outerwear:[["leather","Leather jackets","جاكيتات جلد"],["coats","Coats","معاطف"],["jackets","Jackets","جاكيتات"]],
+ knitwear:[["sweaters","Sweaters","كنزات"],["roll-necks","Roll-necks","رقبة عالية"],["cardigans","Cardigans","كارديغان"],["hoodies","Hoodies","هوديز"]],
+ shirts:[["formal","Formal shirts","قمصان رسمية"],["casual","Casual shirts","قمصان كاجوال"],["polos","Polos","بولو"]],
+ footwear:[["sneakers","Sneakers","سنيكرز"]]
+};
+{const S={1:"suits",2:"three-piece",3:"three-piece",4:"suits",5:"blazers",6:"blazers",7:"suits",8:"leather",9:"coats",10:"coats",11:"jackets",12:"sweaters",13:"roll-necks",14:"cardigans",15:"hoodies",16:"formal",17:"formal",18:"casual",19:"polos",20:"casual",21:"sneakers",22:"sneakers"};window.P.forEach(p=>p.sub=S[p.id]);}

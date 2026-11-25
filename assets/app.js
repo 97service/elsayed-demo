@@ -49,24 +49,37 @@ function chrome(){
  const page=document.body.dataset.page||"";
  document.documentElement.lang=lang;document.documentElement.dir=ar()?"rtl":"ltr";
  const nav=[...CATS.map(c=>[`shop.html?cat=${c.k}`,bi(c.en,c.ar),""]),["shop.html?sale=1",bi("Sale","تنزيلات"),"sale"]];
+ const SUBS=window.SUBS;
+ const card2=p=>`<a href="product.html?id=${p.id}"><img src="${img(p.img[0],400)}" alt="" loading="lazy"><span>${p.b}${p.off?" · −"+p.off+"%":""}</span><b>${pname(p)}</b></a>`;
+ const mega=c=>{const subs=SUBS[c.k]||[];
+  return `<div class="mega"><div class="mega-in"><div class="mcol"><h5>${T(c.en,c.ar)}</h5><a href="shop.html?cat=${c.k}">${T("Shop all","تسوّق الكل")}</a>${subs.map(([k,e,a])=>`<a href="shop.html?cat=${c.k}&sub=${k}">${T(e,a)}</a>`).join("")}</div>
+  <div class="mcol"><h5>${T("Brands","الماركات")}</h5>${window.BRANDS.filter(b=>P.some(p=>p.c===c.k&&p.b===b)).map(b=>`<a href="shop.html?cat=${c.k}&brand=${encodeURIComponent(b)}">${b}</a>`).join("")}</div>
+  <div class="mfeat">${P.filter(p=>p.c===c.k).slice(0,2).map(card2).join("")}</div></div></div>`};
+ const newMega=`<div class="mega"><div class="mega-in"><div class="mcol"><h5>${T("New in","وصل حديثاً")}</h5><a href="shop.html?new=1">${T("All new arrivals","كل الجديد")}</a>${CATS.map(c=>`<a href="shop.html?cat=${c.k}">${T(c.en,c.ar)}</a>`).join("")}</div><div class="mcol"><h5>${T("Brands","الماركات")}</h5>${window.BRANDS.map(b=>`<a href="shop.html?brand=${encodeURIComponent(b)}">${b}</a>`).join("")}</div><div class="mfeat">${P.filter(p=>p.isNew).slice(0,2).map(card2).join("")}</div></div></div>`;
+ const saleMega=`<div class="mega"><div class="mega-in"><div class="mcol"><h5>${T("Sale","تنزيلات")}</h5><a href="shop.html?sale=1">${T("Everything on sale","كل التنزيلات")}</a>${CATS.map(c=>`<a href="shop.html?cat=${c.k}">${T(c.en,c.ar)}</a>`).join("")}</div><div class="mcol"><h5>${T("Black November","بلاك نوفمبر")}</h5><p class="muted" style="margin:0;font-size:13px;max-width:220px">${T("Up to 40% off until 29 November.","خصم لغاية 40% لحد 29 تشرين الثاني.")}</p></div><div class="mfeat">${P.filter(p=>p.off>=40).slice(0,2).map(card2).join("")}</div></div></div>`;
+ const navItems=[`<li><a href="shop.html?new=1">${T("New in","وصل حديثاً")}</a>${newMega}</li>`,...CATS.map(c=>`<li><a href="shop.html?cat=${c.k}">${T(c.en,c.ar)}</a>${mega(c)}</li>`),`<li><a href="shop.html?sale=1" class="sale">${T("Sale","تنزيلات")}</a>${saleMega}</li>`].join("");
+ const mAcc=CATS.map(c=>`<details><summary>${T(c.en,c.ar)}</summary><a href="shop.html?cat=${c.k}">${T("Shop all","تسوّق الكل")}</a>${(SUBS[c.k]||[]).map(([k,e,a])=>`<a href="shop.html?cat=${c.k}&sub=${k}">${T(e,a)}</a>`).join("")}</details>`).join("");
  const hdr=`<div class="promo">${bi('<b>Black November</b> · up to 40% off everything · 25 to 29 November · Free delivery over $150','<b>بلاك نوفمبر</b> · خصم لغاية 40% على كل المحل · من 25 لـ 29 تشرين الثاني · توصيل مجاني فوق 150$')}</div>
  <header class="site"><div class="bar">
-  <div class="left"><button class="icon menubtn" id="menuBtn" aria-label="Menu">${ico.menu}</button><button class="icon" id="searchBtn" aria-label="Search">${ico.search}</button><button class="lang hide-m" id="langBtn">${ar()?"English":"عربي"}</button></div>
-  <a class="logo" href="index.html">EL SAYED<small>BOUTIQUE · TRIPOLI</small></a>
-  <div class="right"><a class="icon hide-m" href="contact.html" aria-label="Contact">${ico.user}</a><a class="icon" href="wishlist.html" aria-label="Wishlist">${ico.heart}<span class="n" id="wishN" hidden></span></a><button class="icon" id="bagBtn" aria-label="Bag">${ico.bag}<span class="n" id="bagN" hidden></span></button></div>
- </div>
- <nav class="main"><a href="shop.html?new=1">${bi("New in","وصل حديثاً")}</a>${nav.map(([h,l,c])=>`<a href="${h}" class="${c}">${l}</a>`).join("")}<a href="about.html">${bi("The boutique","عن المحل")}</a></nav></header>
+  <button class="icon menubtn" id="menuBtn" aria-label="Menu">${ico.menu}</button>
+  <a class="logo" href="index.html">EL SAYED</a>
+  <nav class="main"><ul>${navItems}</ul></nav>
+  <div class="right"><button class="icon" id="searchBtn" aria-label="Search">${ico.search}</button><a class="icon hide-m" href="contact.html" aria-label="Contact">${ico.user}</a><a class="icon" href="wishlist.html" aria-label="Wishlist">${ico.heart}<span class="n" id="wishN" hidden></span></a><button class="icon" id="bagBtn" aria-label="Bag">${ico.bag}<span class="n" id="bagN" hidden></span></button><button class="lang hide-m" id="langBtn">${ar()?"EN":"عربي"}</button></div>
+ </div></header>
  <div class="mnav" id="mnav"><button class="icon" id="mClose" aria-label="Close">${ico.x}</button>
-  <a href="shop.html?new=1">${bi("New in","وصل حديثاً")}</a>${nav.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}<a href="shop.html">${bi("Shop all","كل المنتجات")}</a><a href="about.html">${bi("The boutique","عن المحل")}</a><a href="contact.html">${bi("Contact & store","تواصل وعنوان المحل")}</a><a href="shipping.html">${bi("Delivery & returns","التوصيل والتبديل")}</a>
+  <a href="shop.html?new=1">${T("New in","وصل حديثاً")}</a>${mAcc}<a href="shop.html?sale=1" style="color:var(--sale)">${T("Sale","تنزيلات")}</a><a href="about.html">${T("The boutique","عن المحل")}</a><a href="contact.html">${T("Contact & store","تواصل وعنوان المحل")}</a><a href="shipping.html">${T("Delivery & returns","التوصيل والتبديل")}</a>
   <button class="btn ghost mt" id="langBtn2">${ar()?"English":"عربي"}</button></div>
  <div class="search" id="search"><form action="shop.html"><input name="q" placeholder="${T("Search jackets, BOSS, sneakers…","دوّر على جاكيت، BOSS، سنيكرز…")}" aria-label="Search"><button class="icon" type="button" id="sClose" aria-label="Close">${ico.x}</button></form>
-  <div class="hint">${T("Popular:","الأكثر بحثاً:")} <a href="shop.html?q=leather">Leather</a><a href="shop.html?brand=BOSS">BOSS</a><a href="shop.html?cat=knitwear">${catName("knitwear")}</a><a href="shop.html?cat=footwear">${catName("footwear")}</a></div></div>
+  <div class="hint">${T("Popular:","الأكثر بحثاً:")} <a href="shop.html?q=leather">Leather</a><a href="shop.html?brand=BOSS">BOSS</a><a href="shop.html?cat=suits">${catName("suits")}</a><a href="shop.html?cat=footwear">${catName("footwear")}</a></div></div>
  <div class="scrim" id="scrim"></div>
  <aside class="drawer" id="drawer" aria-label="Bag"><header><h3 style="font-size:24px">${T("Your bag","السلة")}</h3><button class="icon" id="dClose" aria-label="Close">${ico.x}</button></header><div class="lines" id="dLines"></div><div class="sum" id="dSum"></div></aside>
  <a class="fab" href="https://wa.me/${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">${ico.wa}</a>
  <div class="toast" id="toast"></div>`;
  $("#hdr").innerHTML=hdr;
- $$("nav.main a").forEach(a=>{if(location.href.endsWith(a.getAttribute("href")))a.classList.add("on")});
+ $$("nav.main li").forEach(li=>{const a=li.querySelector(":scope>a"),m=li.querySelector(".mega");if(!m)return;
+  a.addEventListener("click",e=>{if(matchMedia("(hover:none)").matches&&!li.classList.contains("open")){e.preventDefault();$$("nav.main li.open").forEach(x=>x.classList.remove("open"));li.classList.add("open")}})});
+ document.addEventListener("click",e=>{if(!e.target.closest("nav.main"))$$("nav.main li.open").forEach(x=>x.classList.remove("open"))});
+ $$("nav.main>ul>li>a").forEach(a=>{if(location.href.endsWith(a.getAttribute("href")))a.classList.add("on")});
  const ftr=`<section class="band news"><div class="wrap"><span class="eyebrow" style="color:#aaa">${T("El Sayed Club","نادي السيد")}</span><h2 class="sec" style="margin-top:10px">${T("First to know, first to shop","أوّل من يعرف، وأوّل من يشتري")}</h2><p style="color:#bbb;margin:12px 0 0">${T("New arrivals, private sales and 10% off your first order.","وصول القطع الجديدة، تنزيلات خاصة، و10% خصم على أوّل طلب.")}</p>
   <form id="newsForm"><input type="email" required placeholder="${T("Your email","إيميلك")}" aria-label="Email"><button>${T("Join","اشترك")}</button></form><div class="ok" id="newsOk"></div></div></section>
  <footer class="site band"><div class="wrap"><div class="cols">
@@ -132,19 +145,20 @@ home(){
  const r=$("#rail");$("#prev").onclick=()=>r.scrollBy({left:(ar()?1:-1)*r.clientWidth*.8,behavior:"smooth"});$("#next").onclick=()=>r.scrollBy({left:(ar()?-1:1)*r.clientWidth*.8,behavior:"smooth"});
 },
 shop(){
- const cat=q.get("cat"),brand=q.get("brand"),sale=q.get("sale"),isNew=q.get("new"),term=(q.get("q")||"").toLowerCase();
+ const sub=q.get("sub"),cat=q.get("cat"),brand=q.get("brand"),sale=q.get("sale"),isNew=q.get("new"),term=(q.get("q")||"").toLowerCase();
  const C=CATS.find(c=>c.k===cat);
- let title=C?T(C.en,C.ar):brand?brand:sale?T("Sale","تنزيلات"):isNew?T("New in","وصل حديثاً"):term?T(`Results for "${term}"`,`نتائج "${term}"`):T("Shop all","كل المنتجات");
+ const SB=C&&sub?(window.SUBS[cat]||[]).find(x=>x[0]===sub):null;
+ let title=SB?T(SB[1],SB[2]):C?T(C.en,C.ar):brand?brand:sale?T("Sale","تنزيلات"):isNew?T("New in","وصل حديثاً"):term?T(`Results for "${term}"`,`نتائج "${term}"`):T("Shop all","كل المنتجات");
  document.title=title+" · El Sayed Boutique";
  const banner=C?C.img:sale?"1681890443178-360c3a9cc4da":isNew?"1697811599461-38124b3decc9":"1600091106710-7be582d40984";
- $("#banner").innerHTML=`<img src="${img(banner,1800)}" alt="" onerror="${fallback}"><div class="copy"><div class="crumbs" style="color:#ddd"><a href="index.html">${T("Home","الرئيسية")}</a>/<span>${title}</span></div><h1>${title}</h1></div>`;
+ $("#banner").innerHTML=`<img src="${img(banner,1800)}" alt="" onerror="${fallback}"><div class="copy"><div class="crumbs" style="color:#ddd"><a href="index.html">${T("Home","الرئيسية")}</a>/${SB?`<a href="shop.html?cat=${cat}">${T(C.en,C.ar)}</a>/`:""}<span>${title}</span></div><h1>${title}</h1></div>`;
  const chips=[["",T("All","الكل")],...CATS.map(c=>[c.k,T(c.en,c.ar)])];
- $("#chips").innerHTML=chips.map(([k,l])=>`<a class="chip ${(cat||"")===k&&!brand&&!sale&&!isNew&&!term?"on":""}" href="shop.html${k?"?cat="+k:""}">${l}</a>`).join("");
+ if(C){const sc=[["",T("All","الكل")],...(window.SUBS[cat]||[]).map(x=>[x[0],T(x[1],x[2])])];$("#chips").innerHTML=sc.map(([k,l])=>`<a class="chip ${(sub||"")===k?"on":""}" href="shop.html?cat=${cat}${k?"&sub="+k:""}">${l}</a>`).join("")}else $("#chips").innerHTML=chips.map(([k,l])=>`<a class="chip ${(cat||"")===k&&!brand&&!sale&&!isNew&&!term?"on":""}" href="shop.html${k?"?cat="+k:""}">${l}</a>`).join("");
  const bsel=$("#fBrand"),ssel=$("#fSize");
  bsel.innerHTML=`<option value="">${T("All brands","كل الماركات")}</option>`+window.BRANDS.map(b=>`<option ${b===brand?"selected":""}>${b}</option>`).join("");
  const sizes=[...new Set(P.flatMap(p=>Object.keys(p.st)))];
  ssel.innerHTML=`<option value="">${T("Any size","كل المقاسات")}</option>`+sizes.map(s=>`<option>${s}</option>`).join("");
- const draw=()=>{let L=P.filter(p=>(!cat||p.c===cat)&&(!sale||p.off)&&(!isNew||p.isNew)&&(!term||(p.n+" "+p.b+" "+p.c+" "+(p.ar||"")).toLowerCase().includes(term)));
+ const draw=()=>{let L=P.filter(p=>(!cat||p.c===cat)&&(!sub||p.sub===sub)&&(!sale||p.off)&&(!isNew||p.isNew)&&(!term||(p.n+" "+p.b+" "+p.c+" "+(p.ar||"")).toLowerCase().includes(term)));
   const b=bsel.value,s=ssel.value,inS=$("#fStock").checked;
   if(b)L=L.filter(p=>p.b===b);if(s)L=L.filter(p=>p.st[s]>0);if(inS)L=L.filter(p=>total(p)>0);
   const so=$("#sort").value;if(so==="low")L.sort((a,b)=>now(a)-now(b));if(so==="high")L.sort((a,b)=>now(b)-now(a));if(so==="off")L.sort((a,b)=>b.off-a.off);if(so==="new")L.sort((a,b)=>(b.isNew?1:0)-(a.isNew?1:0));
